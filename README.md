@@ -36,7 +36,7 @@ This is a development setup with docker compose for the [Cloudflare OpenAPI Temp
 3. Start the container.
 
     ```shell
-    task run
+    task up
     ```
 4. Access the UI at [`http://localhost:8788`](http://localhost:8788).
 
