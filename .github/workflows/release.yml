@@ -1,0 +1,46 @@
+name: Deploy Worker
+
+env:
+  SHOW_DEPLOYMENT_URL: false # change to true to show deployment URL
+  WRANGLER_QUIET: true # change to false to show wrangler logs
+  WRANGLER_VERSION: '4.36.0'
+
+on:
+  workflow_dispatch:
+    inputs:
+      app_env:
+        description: "Choose APP_ENV variable: <development|production>"
+        required: true
+        default: "production"
+        type: choice
+        options:
+          - 'production'
+          - 'development'
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Build & Deploy Worker
+        uses: cloudflare/wrangler-action@v3
+        id: deploy
+        with:
+          wranglerVersion: ${{ env.WRANGLER_VERSION }}
+          quiet: ${{ env.WRANGLER_QUIET }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy --var APP_ENV:${{ github.event.inputs.app_env || 'production' }}
+
+      - name: Show deployment URL
+        if: env.SHOW_DEPLOYMENT_URL == 'true'
+        env:
+          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
+        run: |
+          echo "::notice title=URL::Worker deployed at: ${{ steps.deploy.outputs.deployment-url }}"

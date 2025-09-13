@@ -1,0 +1,34 @@
+{
+	"name": "docker-cloudflare-chanfana-openapi-template",
+	"description": "Complete backend API template using Hono + Chanfana + Vite.",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"test": "npx vitest run --config tests/vitest.config.mts",
+		"wrangler-types": "wrangler types",
+		"wrangler-deploy": "wrangler deploy",
+		"wrangler-version": "wrangler --version",
+		"biome-lint": "npx @biomejs/biome lint",
+		"biome-lint-fix": "npx @biomejs/biome lint --write",
+		"biome-format": "npx @biomejs/biome format",
+		"biome-format-fix": "npx @biomejs/biome format --write",
+		"biome-check": "npx @biomejs/biome check",
+		"biome-check-fix": "npx @biomejs/biome check --write"
+	},
+	"dependencies": {
+		"chanfana": "^2.8.1",
+		"hono": "^4.8.2",
+		"zod": "^3.25.67"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.2.4",
+		"@cloudflare/vite-plugin": "^1.12.3",
+		"@cloudflare/vitest-pool-workers": "^0.9.0",
+		"@hono/vite-dev-server": "^0.21.0",
+		"@types/node": "^24.0.4",
+		"typescript": "^5.8.3",
+		"vite": "^7.1.4",
+		"wrangler": "^4.34.0"
+	}
+}

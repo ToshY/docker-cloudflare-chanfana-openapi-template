@@ -1,0 +1,9 @@
+{
+	"linter": {
+		"enabled": true
+	},
+	"formatter": { "enabled": true },
+	"files": {
+		"includes": ["**", "!**/.wrangler", "!worker-configuration.d.ts"]
+	}
+}

@@ -1,0 +1,106 @@
+version: '3'
+
+env:
+  UID:
+    sh: id -u
+  GID:
+    sh: id -g
+  TTY: ''
+
+tasks:
+  default:
+    cmds:
+      - task --list
+
+  # Setup
+  setup:
+    desc: Setup dev environment
+    cmds:
+      - task: init
+      - task: npm:install
+      - task: up
+
+  init:
+    desc: Initialise dev dotenvs
+    silent: true
+    cmds:
+      - |
+        if [ ! -f ./.env.dev ]; then
+            cp .env.dev.example ./.env.dev
+        fi
+        if [ ! -f ./.env ]; then
+            cp .env.example ./.env
+        fi
+
+  # Docker
+  up:
+    desc: Start dev environment
+    silent: true
+    cmds:
+      - docker compose up -d --build --remove-orphans
+      - printf "Visit \033[32;4m%s\033[0m to use your application\n" "http://localhost:8788"
+
+  down:
+    desc: Stop dev environment
+    silent: true
+    cmds:
+      - docker compose down {{.CLI_ARGS | default "--remove-orphans"}}
+
+  logs:
+    desc: Show logs
+    cmds:
+      - docker compose logs -ft
+
+  # Worker
+  npm:install:
+    desc: Install dependencies
+    silent: true
+    cmds:
+      - docker compose run $TTY --rm --remove-orphans worker npm install {{.CLI_ARGS}}
+
+  npm:update:
+    desc: Update dependencies
+    cmds:
+      - docker compose run $TTY --rm --remove-orphans worker npm update
+
+  # Test
+  test:
+    desc: Run tests
+    cmds:
+      - docker compose run $TTY --rm --remove-orphans worker npm run test
+
+  # QA tools
+  biome:format:fix:
+    desc: Format code fix
+    cmds:
+      - docker compose run $TTY --rm --remove-orphans worker npm run biome-format-fix
+
+  biome:lint:fix:
+    desc: Lint code fix
+    cmds:
+      - docker compose run $TTY --rm --remove-orphans worker npm run biome-lint-fix
+
+  biome:check:fix:
+    desc: Check code fix
+    cmds:
+      - docker compose run $TTY --rm --remove-orphans worker npm run biome-check-fix
+
+  # Wrangler
+  wrangler:types:
+    desc: Wrangler types
+    cmds:
+      - docker compose run $TTY --rm --remove-orphans worker npm run wrangler-types
+
+  wrangler:deploy:
+    desc: Deploy the Worker to Cloudflare
+    vars:
+      APP_ENV: 'production'
+    cmds:
+      - docker compose run $TTY --rm --remove-orphans worker npm run wrangler-deploy -- --var APP_ENV:{{.APP_ENV}}
+
+  wrangler:secret:
+    desc: Set secret
+    vars:
+      SECRET: '{{.s}}'
+    cmds:
+      - docker compose run $TTY --rm --remove-orphans worker npx wrangler secret put {{.SECRET}}
