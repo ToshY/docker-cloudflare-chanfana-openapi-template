@@ -1,5 +1,8 @@
 name: Deploy Worker
 
+permissions:
+  contents: read
+
 env:
   SHOW_DEPLOYMENT_URL: false # change to true to show deployment URL
   WRANGLER_QUIET: true # change to false to show wrangler logs
