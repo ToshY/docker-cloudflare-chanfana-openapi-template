@@ -63,13 +63,12 @@ tasks:
     cmds:
       - docker compose run $TTY --rm --remove-orphans worker npm update
 
-  # Test
-  test:
-    desc: Run tests
-    cmds:
-      - docker compose run $TTY --rm --remove-orphans worker npm run test
-
   # QA tools
+  precommit:install:
+    desc: Run precommit
+    cmds:
+      - pre-commit install
+
   biome:format:fix:
     desc: Format code fix
     cmds:
@@ -84,6 +83,11 @@ tasks:
     desc: Check code fix
     cmds:
       - docker compose run $TTY --rm --remove-orphans worker npm run biome-check-fix
+
+  test:
+    desc: Run tests
+    cmds:
+      - docker compose run $TTY --rm --remove-orphans worker npm run test
 
   # Wrangler
   wrangler:types:

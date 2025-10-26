@@ -174,6 +174,19 @@ task biome:check:fix
 - This Chanfana OpenAPI example uses middleware applied to all routes (for fast setup of secure API endpoints).
   - Use the `x-api-key` header to authenticate requests, or use the "Authorize" button when using the UI with `API_KEY` value set in the `.env` file.
 
+## 🛠️ Contribute
+
+### Requirements
+
+* ☑️ [Pre-commit](https://pre-commit.com/#installation).
+* 📋 [Task (optional)](https://taskfile.dev/installation/)
+
+### Usage
+
+Run `pre-commit install` or `task precommit:install` to install the pre-commit hooks. 
+
+You are now ready to contribute!
+
 ## ❕ Licence
 
 This repository comes with a [MIT license](./LICENSE).
