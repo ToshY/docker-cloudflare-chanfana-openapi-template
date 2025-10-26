@@ -1,0 +1,62 @@
+[
+	{
+		"id": "9f4e1d7d-4f19-4a83-8e23-9e86a5eac0e4",
+		"title": "Inception",
+		"rating": 8.8,
+		"genres": ["Action", "Sci-Fi", "Thriller"]
+	},
+	{
+		"id": "b0a3c2e4-9a28-4c9b-9b7f-5d6b2c9a2d77",
+		"title": "The Shawshank Redemption",
+		"rating": 9.3,
+		"genres": ["Drama"]
+	},
+	{
+		"id": "3a20b6c4-3c32-4a29-8563-6c8a1e2b3f0a",
+		"title": "The Dark Knight",
+		"rating": 9.0,
+		"genres": ["Action", "Crime", "Drama"]
+	},
+	{
+		"id": "e4a93b6a-94c9-4bdf-b09b-1c3a2274b52c",
+		"title": "Interstellar",
+		"rating": 8.6,
+		"genres": ["Adventure", "Drama", "Sci-Fi"]
+	},
+	{
+		"id": "b6e1f86c-7e7a-4e4d-b33b-05ef8a2fd1e9",
+		"title": "Parasite",
+		"rating": 8.5,
+		"genres": ["Comedy", "Drama", "Thriller"]
+	},
+	{
+		"id": "7e0bdfd7-1a02-4f23-b9b1-f3510fdb927c",
+		"title": "The Godfather",
+		"rating": 9.2,
+		"genres": ["Crime", "Drama"]
+	},
+	{
+		"id": "13b4b18d-2571-48b8-913f-6a15b3a4e6da",
+		"title": "Spirited Away",
+		"rating": 8.6,
+		"genres": ["Animation", "Adventure", "Fantasy"]
+	},
+	{
+		"id": "c0de21b5-7e4c-4b2c-aeb6-88e96376f5da",
+		"title": "Pulp Fiction",
+		"rating": 8.9,
+		"genres": ["Crime", "Drama"]
+	},
+	{
+		"id": "a2fd2b3c-8b7e-4b01-8a6c-b39b8a4c13f0",
+		"title": "The Matrix",
+		"rating": 8.7,
+		"genres": ["Action", "Sci-Fi"]
+	},
+	{
+		"id": "6bce2b4a-23f9-4a38-a922-d89c1c27c58e",
+		"title": "The Grand Budapest Hotel",
+		"rating": 8.1,
+		"genres": ["Comedy", "Drama"]
+	}
+]

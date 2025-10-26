@@ -8,6 +8,7 @@ import { DummyEndpoint } from "./endpoints/dummyEndpoint";
 import { EchoEndpoint } from "./endpoints/echoEndpoint";
 import { HealthEndpoint } from "./endpoints/healthEndpoint";
 import { apiKeyMiddleware } from "./middleware/apiKeyMiddleware";
+import { PaginationEndpoint } from "./endpoints/paginationEndpoint";
 
 extendZodWithOpenApi(z);
 
@@ -83,5 +84,6 @@ app.use("*", async (c, next) => {
 openapi.post("/dummy/:slug", DummyEndpoint);
 openapi.get("/health", HealthEndpoint);
 openapi.post("/echo", EchoEndpoint);
+openapi.get("/movies", PaginationEndpoint);
 
 export default app;
