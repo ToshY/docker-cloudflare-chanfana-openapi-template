@@ -63,6 +63,12 @@ tasks:
     cmds:
       - docker compose run $TTY --rm --remove-orphans worker npm update
 
+  npm:run:
+    desc: NPM run
+    silent: true
+    cmds:
+      - docker compose run $TTY --rm --remove-orphans worker npm run {{.CLI_ARGS}}
+
   # QA tools
   precommit:install:
     desc: Run precommit

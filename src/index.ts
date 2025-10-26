@@ -7,8 +7,8 @@ import { z } from "zod";
 import { DummyEndpoint } from "./endpoints/dummyEndpoint";
 import { EchoEndpoint } from "./endpoints/echoEndpoint";
 import { HealthEndpoint } from "./endpoints/healthEndpoint";
-import { apiKeyMiddleware } from "./middleware/apiKeyMiddleware";
 import { PaginationEndpoint } from "./endpoints/paginationEndpoint";
+import { apiKeyMiddleware } from "./middleware/apiKeyMiddleware";
 
 extendZodWithOpenApi(z);
 

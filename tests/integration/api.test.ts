@@ -21,7 +21,9 @@ describe("API Integration Tests", () => {
 
 	describe("GET /movies", () => {
 		it("should return movies", async () => {
-			const response = await authenticatedFetch(`http://local.test/movies?page=1&per_page=5`);
+			const response = await authenticatedFetch(
+				`http://local.test/movies?page=1&per_page=5`,
+			);
 			const body = await response.json<{
 				success: boolean;
 				result: any[];
