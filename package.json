@@ -23,12 +23,12 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.3.11",
-		"@cloudflare/vite-plugin": "^1.12.3",
-		"@cloudflare/vitest-pool-workers": "^0.10.0",
+		"@cloudflare/vite-plugin": "^1.21.1",
+		"@cloudflare/vitest-pool-workers": "^0.12.5",
 		"@hono/vite-dev-server": "^0.23.0",
 		"@types/node": "^24.5.2",
 		"typescript": "^5.8.3",
 		"vite": "^7.1.12",
-		"wrangler": "^4.39.0"
+		"wrangler": "^4.59.3"
 	}
 }
